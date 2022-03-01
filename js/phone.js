@@ -54,6 +54,7 @@ const phoneDetails = (phoneId) => {
 
 }
 const showPhoneDetail = (phone) => {
+    console.log(phone.name)
     console.log(phone.others)
     phoneDetail.innerHTML = "";
     let releaseDate = phone.releaseDate;
