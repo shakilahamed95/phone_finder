@@ -56,6 +56,10 @@ const phoneDetails = (phoneId) => {
 const showPhoneDetail = (phone) => {
     console.log(phone.releaseDate)
     phoneDetail.innerHTML = "";
+    let releaseDate = phone.releaseDate;
+    if (releaseDate === "") {
+        releaseDate = "No relese date available";
+    }
     const div = document.createElement('div');
     div.classList.add("col-lg-4")
     div.classList.add("col-md-4")
@@ -68,12 +72,14 @@ const showPhoneDetail = (phone) => {
                 <div class="card-body">
                     <h4 class="card-title">${phone.brand}</h4>
                     <h5 class="card-text">${phone.name}</h5>
-                    <p > Relese Date : ${phone.releaseDate}</p>
+                    <p> Relese Date: ${releaseDate} </p>
                     <p > Storage: ${phone.mainFeatures.storage}</p>
                     <p > Display : ${phone.mainFeatures.displaySize}</p>
                 </div>
             </div>
                     `
+
+
     phoneDetail.appendChild(div);
 
 
