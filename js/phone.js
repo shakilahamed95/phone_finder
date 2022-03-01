@@ -82,12 +82,12 @@ const showPhoneDetail = (phone) => {
                     <h5> Sensor Details : </h5>
                     <p>${phone.mainFeatures.sensors}</p>
                     <h5>Other Features:</h5>
-                    <p> WLAN : ${phone?.others?.WLAN}</p>
-                    <p> BLUETOOTH : ${phone?.others?.Bluetooth}</p>
-                    <p> GPS : ${phone?.others?.GPS}</p>
-                    <p> NFC : ${phone?.others?.NFC}</p>
-                    <p> RADIO : ${phone?.others?.Radio}</p>
-                    <p> USB : ${phone?.others?.USB}</p>
+                    <p> WLAN : ${phone?.others?.WLAN ?? "No information available"}</p>
+                    <p> BLUETOOTH : ${phone?.others?.Bluetooth ?? "No information available"}</p>
+                    <p> GPS : ${phone?.others?.GPS ?? "No information available"}</p>
+                    <p> NFC : ${phone?.others?.NFC ?? "No information available"}</p>
+                    <p> RADIO : ${phone?.others?.Radio ?? "No information available"}</p>
+                    <p> USB : ${phone?.others?.USB ?? "No information available"}</p>
                 </div>
             </div>
                     `
