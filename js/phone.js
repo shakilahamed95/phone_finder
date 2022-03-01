@@ -1,12 +1,13 @@
 const searchResult = document.getElementById("search-result")
 const phoneDetail = document.getElementById("phone-detail");
-
+//  search phone section 
 const searchPhone = () => {
     const searchField = document.getElementById("search-field")
     const inputError = document.getElementById("error");
     const searchText = searchField.value;
     searchField.value = '';
     phoneDetail.innerHTML = "";
+    // input search error handling 
     if (searchText.toLowerCase() === "huawei" || searchText.toLowerCase() === "iphone" || searchText.toLowerCase() === "samsung" || searchText.toLowerCase() === "oppo") {
         const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
         fetch(url)
@@ -20,6 +21,7 @@ const searchPhone = () => {
         searchResult.innerHTML = "";
     }
 }
+// display phone function 
 const displayPhone = (phones) => {
     searchResult.textContent = '';
     if (phones.length > 20) {
@@ -45,6 +47,7 @@ const displayPhone = (phones) => {
         searchResult.appendChild(div);
     })
 }
+// phone deatial section 
 const phoneDetails = (phoneId) => {
     const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`;
     fetch(url)
@@ -54,8 +57,6 @@ const phoneDetails = (phoneId) => {
 
 }
 const showPhoneDetail = (phone) => {
-    console.log(phone.name)
-    console.log(phone.others)
     phoneDetail.innerHTML = "";
     let releaseDate = phone.releaseDate;
     if (releaseDate === "") {
@@ -75,8 +76,11 @@ const showPhoneDetail = (phone) => {
                     <h5 class="card-text">${phone.name}</h5>
                     <p> Relese Date: ${releaseDate} </p>
                     <p> Storage: ${phone.mainFeatures.storage}</p>
+                    <p> Memory : ${phone.mainFeatures.memory}</p>
                     <p> Display : ${phone.mainFeatures.displaySize}</p>
-                    <p> Sensor Details : ${phone.mainFeatures.sensors}</p>
+                    <p> ChipSet : ${phone.mainFeatures.chipSet}</p>
+                    <h5> Sensor Details : </h5>
+                    <p>${phone.mainFeatures.sensors}</p>
                     <h5>Other Features:</h5>
                     <p> WLAN : ${phone?.others?.WLAN}</p>
                     <p> BLUETOOTH : ${phone?.others?.Bluetooth}</p>
@@ -90,6 +94,4 @@ const showPhoneDetail = (phone) => {
 
 
     phoneDetail.appendChild(div);
-
-
 }
