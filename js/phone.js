@@ -5,14 +5,12 @@ const searchPhone = () => {
     const inputError = document.getElementById("error");
     const searchText = searchField.value;
     searchField.value = '';
-    if (searchText === "Huawei" || searchText === "iphone" || searchText === "appale" || searchText === "samsung" || searchText === "oppo") {
+    if (searchText.toLowerCase() === "huawei" || searchText.toLowerCase() === "iphone" || searchText.toLowerCase() === "samsung" || searchText.toLowerCase() === "oppo") {
         const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
         fetch(url)
             .then(response => response.json())
             .then(data => displayPhone(data.data))
         inputError.innerText = "";
-
-
     }
     else {
 
@@ -21,8 +19,10 @@ const searchPhone = () => {
     }
 }
 const displayPhone = (phones) => {
-
     searchResult.textContent = '';
+    if (phones.length > 20) {
+        phones = phones.slice(0, 20)
+    }
     phones.forEach(phone => {
         console.log(phone)
         const div = document.createElement('div');
@@ -32,15 +32,15 @@ const displayPhone = (phones) => {
         div.classList.add("col-12")
         div.classList.add("mb-5")
         div.innerHTML = `
-            <div class="card" style="width: 18rem;">
-            <img src="${phone.image}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">${phone.brand}</h5>
-                <p class="card-text">${phone.phone_name}</p>
-                <button class="btn btn-primary">See Details</button>
+                <div class="card" style="width: 18rem;">
+                <img src="${phone.image}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">${phone.brand}</h5>
+                    <p class="card-text">${phone.phone_name}</p>
+                    <button class="btn btn-primary">See Details</button>
+                </div>
             </div>
-        </div>
-                `
+                    `
         searchResult.appendChild(div);
     })
 }
