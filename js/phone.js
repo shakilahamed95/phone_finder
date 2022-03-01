@@ -54,7 +54,7 @@ const phoneDetails = (phoneId) => {
 
 }
 const showPhoneDetail = (phone) => {
-    console.log(phone.releaseDate)
+    console.log(phone.others)
     phoneDetail.innerHTML = "";
     let releaseDate = phone.releaseDate;
     if (releaseDate === "") {
@@ -67,14 +67,22 @@ const showPhoneDetail = (phone) => {
     div.classList.add("col-12")
     div.classList.add("mb-5")
     div.innerHTML = `
-                <div class="card" style="width: 18rem;">
+             <div class="card" style="width: 18rem;">
                 <img src="${phone.image}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h4 class="card-title">${phone.brand}</h4>
                     <h5 class="card-text">${phone.name}</h5>
                     <p> Relese Date: ${releaseDate} </p>
-                    <p > Storage: ${phone.mainFeatures.storage}</p>
-                    <p > Display : ${phone.mainFeatures.displaySize}</p>
+                    <p> Storage: ${phone.mainFeatures.storage}</p>
+                    <p> Display : ${phone.mainFeatures.displaySize}</p>
+                    <p> Sensor Details : ${phone.mainFeatures.sensors}</p>
+                    <h5>Other Features:</h5>
+                    <p> WLAN : ${phone?.others?.WLAN}</p>
+                    <p> BLUETOOTH : ${phone?.others?.Bluetooth}</p>
+                    <p> GPS : ${phone?.others?.GPS}</p>
+                    <p> NFC : ${phone?.others?.NFC}</p>
+                    <p> RADIO : ${phone?.others?.Radio}</p>
+                    <p> USB : ${phone?.others?.USB}</p>
                 </div>
             </div>
                     `
