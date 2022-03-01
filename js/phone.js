@@ -1,15 +1,27 @@
+const searchResult = document.getElementById("search-result")
+
 const searchPhone = () => {
     const searchField = document.getElementById("search-field")
+    const inputError = document.getElementById("error");
     const searchText = searchField.value;
     searchField.value = '';
-    const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
-    fetch(url)
-        .then(response => response.json())
-        .then(data => displayPhone(data.data))
+    if (searchText === "Huawei" || searchText === "iphone" || searchText === "appale" || searchText === "samsung" || searchText === "oppo") {
+        const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
+        fetch(url)
+            .then(response => response.json())
+            .then(data => displayPhone(data.data))
+        inputError.innerText = "";
 
+
+    }
+    else {
+
+        inputError.innerText = "Sorry no result found";
+        searchResult.innerHTML = "";
+    }
 }
 const displayPhone = (phones) => {
-    const searchResult = document.getElementById("search-result")
+
     searchResult.textContent = '';
     phones.forEach(phone => {
         console.log(phone)
